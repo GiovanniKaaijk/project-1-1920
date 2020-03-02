@@ -17,6 +17,7 @@ fetch(url, config)
     return response.json();
   })
   .then(data => {
+    console.log(data)
     render(data);
   })
   .catch(err => {

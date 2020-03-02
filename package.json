@@ -1,0 +1,28 @@
+{
+  "name": "project-1-1920",
+  "version": "1.0.0",
+  "description": "## Zoek in de de collectie van de OBA",
+  "main": "webpack.config.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiovanniKaaijk/project-1-1920.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiovanniKaaijk/project-1-1920/issues"
+  },
+  "homepage": "https://github.com/GiovanniKaaijk/project-1-1920#readme",
+  "dependencies": {
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

@@ -1,1 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Chilanka&display=swap');
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p, span, a, div {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Chilanka', Arial, Helvetica, sans-serif;
+}
+
+main {
+    display: flex;
+}
+
+main aside {
+    width: 30%;
+}
+
+main aside h1 {
+    text-align: center;
+}
+
+main .content {
+    width: 70%;
+}
+
+.input {
+    display: none;
+}
+
+.active input {
+    display: unset;
+}
