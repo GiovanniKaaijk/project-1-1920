@@ -1,11 +1,17 @@
+import elementEvents from './elementEvents'
+
 export default function () { 
-    const contentWrapper = document.querySelector('.content')
+    const contentWrapper = document.querySelector('.content .container')
     const optionElements = document.querySelectorAll('.options div')
     let currentElement, oldElement;
     // remove active class when clicked on other component
     document.onclick = function(e){
+        
         if(currentElement !== oldElement) {
-            if(oldElement) oldElement.classList.remove('active')
+            if(oldElement) {
+                oldElement.classList.remove('active')
+                oldElement.replaceWith(oldElement);
+            }
         } 
         oldElement = currentElement
      };
@@ -40,48 +46,16 @@ export default function () {
         let nodeCopy = draggableElement.cloneNode(true)
         // set the same class for upcoming functions
         nodeCopy.className = className
-        const content = event.target;
-        content.appendChild(nodeCopy);
+        
+        contentWrapper.appendChild(nodeCopy);
       
         event
           .dataTransfer
           .clearData();
         
-        setupElementEvents(nodeCopy)
-      }
-    
-    function setupElementEvents (node) {
-        node.addEventListener('click', function() {
-            // add active to block to display input
-            node.classList.add('active')
-            // get all childs
-            const childNodes = this.childNodes
-            // get first tagname
-            const tagName = childNodes[1].tagName
-
-            // get input field
-            const changeIndex = getIndex(node, tagName)
-            const changeField = childNodes[changeIndex]
-        
-            const inputIndex = getIndex(node, 'input')
-            const inputField = childNodes[inputIndex]
-            
-            // change first tagname on input
-            inputField.addEventListener('input', function() {
-                const value = inputField.value
-                changeField.textContent = value
-            })
-            currentElement = node
+        nodeCopy.addEventListener('click', function() {
+            currentElement = this
         })
-    }
-    function getIndex(el, type) {
-        const children = el.childNodes
-        let index = Number
-        children.forEach((child, i) => {
-            if (child.tagName == type.toUpperCase()) {
-                index = i
-            }
-        });    
-        return index ? index : -1
-    }
+        elementEvents(nodeCopy)
+      }
 }

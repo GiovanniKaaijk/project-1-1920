@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 
 main {
     display: flex;
+    margin: 0 30px;
 }
 
 main aside {
@@ -29,10 +30,25 @@ main .content {
     width: 70%;
 }
 
-.input {
+.input, label, .checkbox {
     display: none;
 }
 
-.active input {
+.active input, .active label, .active .checkbox {
     display: unset;
+}
+
+.container {
+    min-height: 90vh;
+    width: 100%;
+    border: 2px solid #e6e6e6;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.float {
+    position: absolute;
+    top: 0;
+    left: 0;
 }

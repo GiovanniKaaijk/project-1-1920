@@ -1,3 +1,8 @@
 import dragEvents from './dragEvents'
 
-dragEvents()
+function init() {
+    dragEvents()
+}
+
+
+init()
