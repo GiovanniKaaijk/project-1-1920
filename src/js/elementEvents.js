@@ -1,62 +1,76 @@
-export default function (node) {
-    const coords = node.getBoundingClientRect()
-    // get all childs
-    const childNodes = node.childNodes
-    node.addEventListener('click', function() {        
-        // add active to block to display input
-        node.classList.add('active')
-        
-        // get first tagname
-        const targetElement = childNodes[1]
-    
-        const inputIndex = getIndex(node, 'input')
-        if(inputIndex !== -1) {
-            const inputField = childNodes[inputIndex]
-            console.log(inputField, targetElement, childNodes)
-            // change first tagname on input
-            inputField.addEventListener('input', function() {
-                const value = inputField.value
-                targetElement.textContent = value
-            })
-        } else {
-            console.log('not found')
-        }
-    })
+import updateItem from "./updateItem";
 
-    // position absolute
-    const checkboxIndex = getIndex(node, 'checkbox')
-    const checkboxEl = childNodes[checkboxIndex]
-    if(checkboxEl ) {
-        checkboxEl.addEventListener('click', function() {
-            if(checkboxEl.checked) {
-                node.classList.add('float')
-            } else {
-                node.classList.remove('float')
-                node.style.left = 0;
-                node.style.top = 0;
-            }
-            
-        })   
-        node.addEventListener('dragend', function(e) {
-            let x = e.pageX - coords.x
-            let y = e.pageY - coords.y
-            if (x < 0) x = 0
-            if (y < 0) y = 0
-            event.currentTarget.style.left = x + 'px';
-            event.currentTarget.style.top = y + 'px';
-        })
-    }
+export default function(node, coords) {
+    let currentNode = node
+  const fontSize = document.querySelector(".customize_component .fontSize");
+  fontSize.addEventListener("input", changeFontSize)
 
-    function getIndex(el, className) {
-        const children = el.childNodes
-        let index;
-        children.forEach((child, i) => {
-            if(child.classList) {
-                if (child.classList.contains(`${className}`)) {
-                    index = i
-                }
-            }
-        });    
-        return index ? index : -1
-    }
+  const position = document.querySelector(".customize_component .checkbox")
+  //position.addEventListener("click", changePositionStyle);
+
+  const inputField = document.querySelector(".customize_component .textInput")
+  inputField.addEventListener("input", changeinput)
+
+  function changePositionStyle() {
+    this.checked
+      ? document.querySelector('.activeEl').setAttribute("data-absolute", true)
+      : document.querySelector('.activeEl').setAttribute("data-absolute", false)
+    updateItem(document.querySelector('.activeEl'));
+  }
+
+  function changeinput() {
+    const active = document.querySelector(".activeEl")
+    const activeChilds = active.childNodes;
+    const value = inputField.value;
+    activeChilds[1].textContent = value;
+  }
+
+  function changeFontSize() {
+    node.setAttribute("data-fontsize", fontSize.value)
+    updateItem(node);
+  }
+
+  node.addEventListener("click", runNodeEvents);
+
+  function runNodeEvents() {
+    let curr = document.querySelector('.activeEl')
+    if(curr) curr.classList.remove('active', 'activeEl')
+
+    // add active to block to display input
+    node.classList.add("active", "activeEl");
+    document.querySelector(".customize_component").classList.add("visible")
+
+    const checkboxClone = position.cloneNode(true)
+    position.replaceWith(checkboxClone)
+
+    currentNode = document.querySelector('.activeEl')
+    checkboxClone.addEventListener("click", changePositionStyle)
+  }
+
+  // position absolute
+  let elPosition = {
+    x: 0,
+    y: 0
+  };
+
+  node.addEventListener("dragstart", function(e) {
+    elPosition.x = e.pageX;
+    elPosition.y = e.pageY;
+  });
+
+  node.addEventListener("dragend", changePosition)
+
+  function changePosition(e) {
+    let rect = this.getBoundingClientRect();
+    console.log(coords)
+    const xDiff = elPosition.x - rect.x;
+    const yDiff = elPosition.y - rect.y;
+    let x = e.pageX - coords.x - xDiff;
+    let y = e.pageY - coords.y - yDiff;
+    console.log(x)
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    event.currentTarget.style.left = x + "px";
+    event.currentTarget.style.top = y + "px";
+  }
 }

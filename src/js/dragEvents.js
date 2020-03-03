@@ -2,15 +2,15 @@ import elementEvents from './elementEvents'
 
 export default function () { 
     const contentWrapper = document.querySelector('.content .container')
-    const optionElements = document.querySelectorAll('.options div')
+    const optionElements = document.querySelectorAll('.options > div')
+
     let currentElement, oldElement;
     // remove active class when clicked on other component
     document.onclick = function(e){
-        
         if(currentElement !== oldElement) {
             if(oldElement) {
-                oldElement.classList.remove('active')
-                oldElement.replaceWith(oldElement);
+                oldElement.replaceWith(oldElement)
+                resetEditor(false)
             }
         } 
         oldElement = currentElement
@@ -20,9 +20,36 @@ export default function () {
         option.addEventListener('dragstart', onDragStart)
     })
     
-    
+    contentWrapper.addEventListener('click', function(e) {
+        if(e.target.classList.contains('container')) {
+            if(oldElement) {
+                oldElement.classList.remove('activeEl', 'active')
+            }
+            resetEditor(true)
+        }
+    })
     contentWrapper.addEventListener('dragover', onDragOver)
     contentWrapper.addEventListener('drop', onDrop)
+
+    function resetEditor(bool) {
+        if(bool) {
+            document.querySelector('.customize_component').classList.remove('visible')
+            reset()
+        } else {
+            reset()
+        }
+    }
+    
+    function reset() {
+        const inputs = document.querySelectorAll('.customize_component input')
+        inputs.forEach(input => {
+            if(input.type === 'checkbox') {
+                input.checked = false
+            } else if(input.type === 'text' || input.type === 'number') {
+                input.value = ''
+            }
+        })
+    }
     
     function onDragStart(event) {
         // the dataTransfer object’s property setData
@@ -56,6 +83,7 @@ export default function () {
         nodeCopy.addEventListener('click', function() {
             currentElement = this
         })
-        elementEvents(nodeCopy)
+        const coords = contentWrapper.getBoundingClientRect();
+        elementEvents(nodeCopy, coords)
       }
 }

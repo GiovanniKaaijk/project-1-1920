@@ -30,12 +30,17 @@ main .content {
     width: 70%;
 }
 
-.input, label, .checkbox {
+label, input {
     display: none;
 }
 
-.active input, .active label, .active .checkbox {
+.active input, .active label {
     display: unset;
+}
+
+.active {
+    border: 2px solid #e6e6e6;
+    box-sizing: border-box;
 }
 
 .container {
@@ -45,10 +50,57 @@ main .content {
     margin-top: 30px;
     margin-bottom: 30px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .float {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+}
+
+.container > * {
+    width: 50%;
+    text-align: center;
+    z-index: 1;
+    align-self: flex-start; 
+}
+
+section .pickr .pcr-button {
+    border: 2px solid #e6e6e6;
+    padding: 1em;
+    background-color: hsl
+}
+
+.container .pickr .pcr-button {
+    display: none;
+}
+
+.container .active .pickr .pcr-button {
+    border: 2px solid #e6e6e6;
+    display: unset;
+}
+
+section p {
+    display: none;
+}
+
+.active section p {
+    display: unset;
+}
+
+
+.customize_component {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+.customize_component.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.customize_component * {
+    display: unset;
 }
