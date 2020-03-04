@@ -30,18 +30,11 @@ main .content {
     width: 70%;
 }
 
-label, input {
-    display: none;
-}
 
-.active input, .active label {
-    display: unset;
-}
-
-.active {
+/* .active {
     border: 2px solid #e6e6e6;
     box-sizing: border-box;
-}
+} */
 
 .container {
     min-height: 90vh;
@@ -52,6 +45,7 @@ label, input {
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .float {
@@ -95,12 +89,18 @@ section p {
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #e6e6e6;
+    padding-top: 30px;
 }
 .customize_component.visible {
     opacity: 1;
     visibility: visible;
 }
 
-.customize_component * {
+.customize_component > * {
     display: unset;
+    width: 70%;
+    padding-top: 10px;
 }

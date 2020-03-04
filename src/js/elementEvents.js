@@ -26,8 +26,8 @@ export default function(node, coords) {
   }
 
   function changeFontSize() {
-    node.setAttribute("data-fontsize", fontSize.value)
-    updateItem(node);
+    document.querySelector('.activeEl').setAttribute("data-fontsize", fontSize.value)
+    updateItem(document.querySelector('.activeEl'));
   }
 
   node.addEventListener("click", runNodeEvents);
@@ -68,8 +68,6 @@ export default function(node, coords) {
     let x = e.pageX - coords.x - xDiff;
     let y = e.pageY - coords.y - yDiff;
     console.log(x)
-    if (x < 0) x = 0;
-    if (y < 0) y = 0;
     event.currentTarget.style.left = x + "px";
     event.currentTarget.style.top = y + "px";
   }

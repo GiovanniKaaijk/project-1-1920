@@ -7,7 +7,7 @@ export default function(element, className) {
 const container = document.querySelector('.container')
 const pickr = Pickr.create({
     el: `.${element}`,
-    theme: 'classic', // or 'monolith', or 'nano'
+    theme: 'classic',// or 'monolith', or 'nano'
     padding: 20,
     swatches: [
         'rgba(244, 67, 54, 1)',
@@ -85,4 +85,5 @@ pickr.on('init', instance => {
 }).on('swatchselect', (color, instance) => {
     
 });
+return pickr;
 }

@@ -24,6 +24,7 @@
   "dependencies": {
     "@fantasy-color/hsv-to-rgb": "^1.0.0",
     "@simonwep/pickr": "^1.5.1",
+    "rgb-hex": "^3.0.0",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
   }
