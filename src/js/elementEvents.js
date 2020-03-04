@@ -6,6 +6,7 @@ export default function(node, coords) {
   fontSize.addEventListener("input", changeFontSize)
 
   const position = document.querySelector(".customize_component .checkbox")
+  const imgPosition = document.querySelector('.searchBook .checkbox')
   //position.addEventListener("click", changePositionStyle);
 
   const inputField = document.querySelector(".customize_component .textInput")
@@ -37,11 +38,20 @@ export default function(node, coords) {
     if(curr) curr.classList.remove('active', 'activeEl')
 
     // add active to block to display input
-    node.classList.add("active", "activeEl");
-    document.querySelector(".customize_component").classList.add("visible")
-
-    const checkboxClone = position.cloneNode(true)
-    position.replaceWith(checkboxClone)
+    node.classList.add("active", "activeEl")
+    if(node.classList.contains('img')) {
+      document.querySelector(".searchBook").classList.add("visible")
+    } else {
+      document.querySelector(".customize_component").classList.add("visible")
+    }
+    let checkboxClone;
+    if(node.classList.contains('img')) {
+        checkboxClone = imgPosition.cloneNode(true)
+        imgPosition.replaceWith(checkboxClone)
+    } else {
+        checkboxClone = position.cloneNode(true)
+        position.replaceWith(checkboxClone)
+    }
 
     currentNode = document.querySelector('.activeEl')
     checkboxClone.addEventListener("click", changePositionStyle)
@@ -62,12 +72,12 @@ export default function(node, coords) {
 
   function changePosition(e) {
     let rect = this.getBoundingClientRect();
-    console.log(coords)
+    console.log(rect)
+    console.log(e.pageX, e.pageY)
     const xDiff = elPosition.x - rect.x;
     const yDiff = elPosition.y - rect.y;
     let x = e.pageX - coords.x - xDiff;
     let y = e.pageY - coords.y - yDiff;
-    console.log(x)
     event.currentTarget.style.left = x + "px";
     event.currentTarget.style.top = y + "px";
   }

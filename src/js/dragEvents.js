@@ -22,6 +22,15 @@ export default function(pickr) {
   });
 
   contentWrapper.addEventListener("click", function(e) {
+    const parent = e.target.parentNode;
+    console.log(parent)
+    if(parent.classList.contains('h2') || parent.classList.contains('h3') || parent.classList.contains('p')) {
+      document.querySelector(".searchBook").classList.remove("visible")
+    } else if(parent.classList.contains('img')) {
+      document.querySelector(".customize_component").classList.remove("visible")
+    }
+
+
     if (e.target.classList.contains("container")) {
       if (oldElement) {
         oldElement.classList.remove("activeEl", "active");
@@ -34,9 +43,8 @@ export default function(pickr) {
 
   function resetEditor(bool) {
     if (bool) {
-      document
-        .querySelector(".customize_component")
-        .classList.remove("visible");
+      document.querySelector(".customize_component").classList.remove("visible")
+      document.querySelector(".searchBook").classList.remove("visible")
     } else {
       reset(true);
     }

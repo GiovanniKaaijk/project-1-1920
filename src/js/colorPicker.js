@@ -57,7 +57,7 @@ pickr.on('init', instance => {
 }).on('show', (color, instance) => {
     console.log('show', color, instance);
 }).on('save', (color, instance) => {
-    console.log('save', color, instance);
+    
 }).on('clear', instance => {
     console.log('clear', instance);
 }).on('change', (color, instance) => {

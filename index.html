@@ -31,8 +31,8 @@
                 <p class="drag_item">This is a paragraph</p>
             </div>
             <div class="img drag_wrapper drag_wrapper_img" draggable="true">
-                <p>test</p>
-                <img src="" alt="">
+                <p>Afbeelding</p>
+                <img class="renderImg" src="" alt="">
             </div>
             <section class="customize_component">
                     <div>
@@ -53,8 +53,15 @@
                     </section>
             </section>
             <section class="searchBook">
-                <label for="">Zoeken</label>
-                <input type="text">
+                <div>
+                    <label for="draggable">Draggable?</label>
+                    <input id="draggable" name="draggable" type="checkbox" class="checkbox">
+                </div>
+                <label for="">Width</label>
+                <input class="width" type="text">
+                <label for="">Search</label>
+                <input class="query" type="text">
+                <div class="results"></div>
             </section>
         </aside>
         <div class="content">
