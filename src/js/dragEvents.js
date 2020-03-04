@@ -3,7 +3,7 @@ import rgbHex from 'rgb-hex';
 
 export default function(pickr) {
   const contentWrapper = document.querySelector(".content .container");
-  const optionElements = document.querySelectorAll(".options > div");
+  const optionElements = document.querySelectorAll(".options > div.drag_wrapper");
 
   let currentElement, oldElement;
   // remove active class when clicked on other component
@@ -118,6 +118,7 @@ export default function(pickr) {
     nodeCopy.addEventListener("click", function() {
       currentElement = this;
     });
+    nodeCopy.classList.add('dragged_element')
     const coords = contentWrapper.getBoundingClientRect();
     elementEvents(nodeCopy, coords);
   }

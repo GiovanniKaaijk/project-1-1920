@@ -76,13 +76,6 @@ section .pickr .pcr-button {
     display: unset;
 }
 
-section p {
-    display: none;
-}
-
-.active section p {
-    display: unset;
-}
 
 
 .customize_component {
@@ -103,4 +96,14 @@ section p {
     display: unset;
     width: 70%;
     padding-top: 10px;
+}
+
+.img img {
+    min-height: 100px;
+    min-width: 100px;
+    border: 1px solid #e6e6e6;
+}
+
+.img.drag_wrapper img {
+    display: none;
 }
