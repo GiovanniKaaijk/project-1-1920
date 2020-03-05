@@ -25,6 +25,7 @@ async function getData(input) {
     })
     returnData = await data.getData(input);
     toggle = true;
+    console.log(returnData)
     createRender(returnData);
   }
 }

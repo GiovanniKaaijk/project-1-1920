@@ -71,14 +71,26 @@ export default function(node, coords) {
   node.addEventListener("dragend", changePosition)
 
   function changePosition(e) {
-    let rect = this.getBoundingClientRect();
-    console.log(rect)
-    console.log(e.pageX, e.pageY)
-    const xDiff = elPosition.x - rect.x;
-    const yDiff = elPosition.y - rect.y;
-    let x = e.pageX - coords.x - xDiff;
-    let y = e.pageY - coords.y - yDiff;
-    event.currentTarget.style.left = x + "px";
-    event.currentTarget.style.top = y + "px";
+    if(node.classList.contains('img')) {
+      let rect = this.getBoundingClientRect()
+      console.log(rect)
+      console.log(elPosition.x, elPosition.y)
+      const xDiff = elPosition.x - rect.x;
+      const yDiff = elPosition.y - rect.y;
+      let x = e.pageX - coords.x - xDiff;
+      let y = e.pageY - coords.y - yDiff;
+      event.currentTarget.style.left = x + "px";
+      event.currentTarget.style.top = y + "px";
+    } else {
+      let rect = this.getBoundingClientRect()
+      console.log(rect)
+      console.log(e.pageX, e.pageY)
+      const xDiff = elPosition.x - rect.x;
+      const yDiff = elPosition.y - rect.y;
+      let x = e.pageX - coords.x - xDiff;
+      let y = e.pageY - coords.y - yDiff;
+      event.currentTarget.style.left = x + "px";
+      event.currentTarget.style.top = y + "px";
+    }
   }
 }

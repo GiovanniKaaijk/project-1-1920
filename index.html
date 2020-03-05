@@ -1,77 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./src/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
     <title>Document</title>
 </head>
+
 <body>
     <header>
 
     </header>
     <main>
         <aside class="options">
-            <h1>Elements</h1>
+            <h1>Bewerken</h1>
             <section class="background-color">
-                <h3>background color:</h3>
+                <h3>Achtergrond kleur:</h3>
                 <div class="color_picker"></div>
             </section>
-            
-            <div class="h2 drag_wrapper" draggable='true'>
-                <h2 class="drag_item">This is a heading</h2>
+            <div class="h2 drag_wrapper" draggable='true' data-absolute="true">
+                <h2 class="drag_item">Dit is een titel</h2>
             </div>
-            <div class="h3 drag_wrapper" draggable="true">
-                <h3 class="drag_item">This is another heading</h3>
+            <div class="p drag_wrapper" draggable="true" data-absolute="true">
+                <p class="drag_item">Dit is een stukje tekst</p>
             </div>
-            <div class="p drag_wrapper" draggable="true">
-                <p class="drag_item">This is a paragraph</p>
-            </div>
-            <div class="img drag_wrapper drag_wrapper_img" draggable="true">
+            <div class="img drag_wrapper drag_wrapper_img" draggable="true" data-absolute="true">
                 <p>Afbeelding</p>
                 <img class="renderImg" src="" alt="">
             </div>
+            <!-- <div class="list drag_wrapper drag_wrapper_list" draggable="true" data-absolute="true">
+                <p>Lijstje</p>
+                <ul>
+                    <li>Lijst punt 1</li>
+                    <li>Lijst punt 2</li>
+                    <li>Lijst punt 3</li>
+                </ul>
+            </div> -->
             <section class="customize_component">
-                    <div>
-                        <label for="">Text value</label>
-                        <textarea class="input textInput" name="textInput" id="textInput" type="textarea" cols="60" rows="10"></textarea>
-                    </div>
-                    <div>
-                        <label for="draggable">Draggable?</label>
-                        <input id="draggable" name="draggable" type="checkbox" class="checkbox">
-                    </div>
-                    <div>
-                        <label for="fontSize">Font size</label>
-                        <input id="fontSize" type="number" class="fontSize">
-                    </div>
-                    <section class="color_parent">
-                        <p>Text color:</p> 
-                        <div class="text_color"></div>
-                    </section>
+                <div>
+                    <label for="">Typ een tekst</label>
+                    <textarea class="input textInput" name="textInput" id="textInput" type="textarea" cols="60"
+                        rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="draggable">Sleepbaar?</label>
+                    <input id="draggable" name="draggable" type="checkbox" class="checkbox">
+                </div>
+                <div>
+                    <label for="fontSize">Font size</label>
+                    <input id="fontSize" type="number" class="fontSize">
+                </div>
+                <section class="color_parent">
+                    <p>Tekst kleur:</p>
+                    <div class="text_color"></div>
+                </section>
             </section>
             <section class="searchBook">
                 <div>
-                    <label for="draggable">Draggable?</label>
+                    <label for="draggable">Sleepbaar?</label>
                     <input id="draggable" name="draggable" type="checkbox" class="checkbox">
                 </div>
-                <label for="">Width</label>
-                <input class="width" type="text">
-                <label for="">Search</label>
-                <input class="query" type="text">
+                <div>
+                    <label for="">Grootte</label>
+                    <input class="width" type="text">
+                </div>
+                
+                <div>
+                    <label for="">Zoek een boek</label>
+                    <input class="query" type="text">
+                </div>
                 <div class="results"></div>
             </section>
         </aside>
         <div class="content">
-            
+
             <div class="container">
 
             </div>
         </div>
     </main>
-    
+    <div style="/*display:none;*/" class="overlay">
+        <svg id="Laag_1" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1921 1079.5">
+            <rect class="cls-1" width="1921" height="1079" />
+            <path class="cls-2"
+                d="M-.5,1079.5h186c46.95-127.35,110.4-180.51,162-205,86.77-41.18,158.43-10,202-66,32.79-42.11,26-103.08,18-174-12-106.65-47.34-132.93-26-173,28.39-53.31,105.6-34.22,131-92,16.23-36.92-11.27-53.86,5-101,15.16-43.92,56.79-80.65,101-90,46.39-9.81,66.28,16.73,103,15,41.64-2,96.68-39.89,158-193H-.5Z"
+                transform="translate(1)" />
+        </svg>
+        <div>
+            <h3>Waar wil je aan werken?</h3>
+            <img src="./src/images/oba-kids.png" alt="">
+            <div>
+                <div>
+                    <img src="./src/images/powerpoint.svg" alt="" class="powerpoint">
+                    <p>Presentatie</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="./src/images/word.svg" alt="" class="word">
+                    <p>Document</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="step_overlay">
+        <div class="step show step_1">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Hier kan je de achtergrond van jouw presentatie veranderen. Klik op het vierkantje, zoek een mooie kleur en ga verder naar de volgende stap.</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_2">
+            <img src="./src/images/arrow-step-2_Tekengebied 1.png" alt="">
+            <p>Dit is een title, slaap deze in jouw presentatie en zet hem neer waar je wilt</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_3">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Hier kan je de tekst van jouw titel of stukje tekst veranderen. Klik op de titel in jouw presentatie en vul hier de tekst in.</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_4">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Als je wilt dat het element niet meer sleepbaar is, kan je dit uit zetten door op het vinkje te klikken</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_5">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Hier kan je de tekstgrootte van jouw stukje tekst veranderen, vul hier een getal in om het te veranderen.</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_6">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Verander hier de kleur van jouw stukje tekst. Klik op het vierkantje, zoek een mooie kleur en ga verder naar de volgende stap.</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_7">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Dit is een afbeelding, sleep deze in jouw presentatie om een afbeelding te kunnen kiezen</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_8">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Om een afbeelding te kunnen kiezen, zoek je hier naar een onderwerp waar jouw afbeelding over gaat. Klik vervolgens op een van de resultaten om deze in de presentatie weer te geven.</p>
+            <button>Volgende</button>
+        </div>
+        <div class="step step_9">
+            <img src="./src/images/arrow-step-1_Tekengebied 1.png" alt="">
+            <p>Hier kan je de grootte van de afbeelding veranderen, typ hier een getal in om de grootte te veranderen.</p>
+            <button>Volgende</button>
+        </div>
+    </div>
     <script src="./dist/bundle.js"></script>
 </body>
+
 </html>

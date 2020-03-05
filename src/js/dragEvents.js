@@ -127,6 +127,7 @@ export default function(pickr) {
       currentElement = this;
     });
     nodeCopy.classList.add('dragged_element')
+    nodeCopy.classList.add('float')
     const coords = contentWrapper.getBoundingClientRect();
     elementEvents(nodeCopy, coords);
   }
