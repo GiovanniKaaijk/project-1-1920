@@ -19,7 +19,7 @@ async function getData(input) {
   let returnData;
   if (toggle) {
     toggle = false;
-    const articles = document.querySelectorAll('.results img-wrapper')
+    const articles = document.querySelectorAll('.results .img-wrapper')
     articles.forEach(article => {
         article.remove()
     })

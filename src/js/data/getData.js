@@ -12,9 +12,9 @@ const createData =  () => {
 
     return {
         getData: async (query) => {
-            let url = `${cors}${endpoint}${query}&authorization=${key}&detaillevel=${detail}&output=json&sort=title`;
+            let url = `${cors}${endpoint}${query}&authorization=${key}&detaillevel=${detail}&output=json`;
             let data = await fetch(url, config)
-                .then(response => {                
+                .then(response => {               
                     return response.json();
                 })
                 .catch(err => {
