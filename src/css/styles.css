@@ -66,7 +66,7 @@ main .content {
 }
 
 .container > * {
-    width: 50%;
+    width: 100%;
     text-align: center;
     z-index: 1;
     align-self: flex-start; 

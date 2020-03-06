@@ -36,7 +36,16 @@ export default function() {
         document.querySelector('svg').classList.add('flow')
         document.querySelector('.overlay').onanimationend = () => {
             document.querySelector('.overlay').classList.add('fade')
-            stepOverlay()
+            let firstInit;
+            if(localStorage.getItem('hasBeenOnOba')){
+                firstInit = JSON.parse(localStorage.getItem('hasBeenOnOba'))
+            }else{
+                firstInit = false
+            }
+            if(!firstInit) {
+                stepOverlay()
+                localStorage.setItem('hasBeenOnOba','true')
+            }
             setTimeout(() => {
                 document.querySelector('.overlay').classList.add('hide')
             }, 300)
